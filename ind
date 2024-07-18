@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recherche et mise en évidence</title>
+    <style>
+        .highlight {
+            background-color: yellow; /* Couleur de fond jaune pour mettre en évidence */
+            color: black; /* Couleur de texte noire pour une meilleure lisibilité */
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="searchWord" placeholder="Entrez le mot à rechercher">
+    <button onclick="searchAndHighlight()">Rechercher</button>
+
+    <!-- Un long contenu pour montrer le fonctionnement de la mise en évidence -->
+    <p id="paragraph1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac urna eget metus consequat vehicula. Morbi facilisis, nisi vitae feugiat bibendum, nisi urna malesuada ipsum, vel vestibulum nunc lectus ut justo.</p>
+    <p id="paragraph2">Ceci est l'élément où le mot sera trouvé. Scroll ici.</p>
+    <p id="paragraph3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac urna eget metus consequat vehicula. Morbi facilisis, nisi vitae feugiat bibendum, nisi urna malesuada ipsum, vel vestibulum nunc lectus ut justo. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum molestias inventore placeat provident esse, minus exercitationem quia culpa, voluptate sequi architecto repellat aliquam amet accusantium quibusdam magnam vel vitae quaerat expedita. Voluptatibus, deserunt? Praesentium illum excepturi beatae quis minus quo in, dolores ad perferendis ipsa error? Dolor esse dolorem nisi doloribus placeat, porro, qui debitis ducimus laudantium doloremque, a enim odio temporibus quaerat? Aspernatur facere, nihil hic veniam aut quae maiores nisi praesentium aperiam inventore in dolorem ab sunt, voluptatibus molestias dignissimos nemo vitae minus est consectetur unde eveniet possimus beatae. Iusto quaerat obcaecati fugiat ipsa? Consequatur dolores reiciendis tempore hic, tenetur pariatur incidunt id sequi eaque inventore quasi cumque temporibus eligendi facere repellendus ex impedit maxime nisi! Blanditiis harum exercitationem earum quaerat ullam veritatis odio fuga nostrum dignissimos, beatae facilis, optio ab veniam voluptatem necessitatibus laudantium commodi. Alias magnam culpa labore quasi. Sed inventore quasi, quo voluptas doloribus provident sunt hic mollitia eveniet? Quod ea eveniet consequuntur obcaecati quos non tempora, doloremque nobis explicabo, quia libero eaque animi! Et, dicta animi ad facilis rem dolor doloremque quas debitis earum voluptatibus, corporis aliquam nihil natus dolores dignissimos exercitationem unde amet, laudantium perferendis repudiandae possimus vitae? Libero sit labore ad velit! junior</p>
+
+    <script>
+        function searchAndHighlight() {
+          alert("Searching")
+            var word = document.getElementById('searchWord').value;
+            var paragraphs = document.getElementsByTagName("p");
+
+            for (var i = 0; i < paragraphs.length; i++) {
+                paragraphs[i].classList.remove("highlight"); // Supprimer la classe "highlight" de tous les paragraphes
+                if (paragraphs[i].innerText.includes(word)) {
+                    paragraphs[i].classList.add("highlight"); // Ajouter la classe "highlight" à l'élément contenant le mot
+                    paragraphs[i].scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    break; // Sortir de la boucle une fois que l'élément est trouvé
+                }
+            }
+
+            if (i === paragraphs.length) {
+                alert("Le mot '" + word + "' n'a pas été trouvé dans la page.");
+            } else {
+                alert("Le mot '" + word + "' a été trouvé dans la page.");
+            }
+        }
+    </script>
+</body>
+</html>
